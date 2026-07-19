@@ -1,11 +1,3 @@
-:root {
-  --brand-blue: #3692ff;
-  --Secondary-400: #9ca3af;
-  --Secondary-800: #1f2937;
-  --Cool-Gray-100: #f3f4f6;
-  --Cool-Gray-800: #1f2937;
-}
-
 * {
   box-sizing: border-box;
 }
