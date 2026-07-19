@@ -114,6 +114,7 @@ main > .password-container {
   position: absolute;
   top: 3.75rem;
   right: 1.5rem;
+  cursor: pointer;
 }
 
 .login-btn {
