@@ -30,20 +30,15 @@ body {
   width: 40rem;
 }
 
-header {
+body header {
   display: flex;
   align-items: center;
   gap: 1.375rem;
 }
 
-header > .logo {
+.logo > img {
   width: 6.4375rem;
   height: 6.4375rem;
-}
-
-.logo > img {
-  width: 100%;
-  height: 100%;
 }
 
 header > span {
