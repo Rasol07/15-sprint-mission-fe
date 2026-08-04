@@ -9,10 +9,10 @@ function checkResponse(response) {
 
 // getArticleList -> page, pageSize, keyword -> offset, limit, 값
 
-async function getArticleList({ offset, limit, keyword }) {
+async function getArticleList({ page, pageSize, keyword }) {
   const articleURL = new URL(`${BASE_URL}/articles`);
-  articleURL.searchParams.set("limit", limit);
-  articleURL.searchParams.set("offset", offset);
+  articleURL.searchParams.set("page", page);
+  articleURL.searchParams.set("pageSize", pageSize);
   articleURL.searchParams.set("keyword", keyword);
 
   return fetch(articleURL).then(checkResponse);

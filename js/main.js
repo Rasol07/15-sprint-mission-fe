@@ -1,10 +1,11 @@
 import article from "./ArticleService.mjs";
+import product from "./ProductService.mjs";
 
 try {
   // getArticleList 실습
   const articleDatas = await article.getArticleList({
-    offset: 10,
-    limit: 10,
+    page: 1,
+    pageSize: 10,
     keyword: "게시글 수정",
   });
   console.log(articleDatas);
@@ -32,6 +33,40 @@ try {
   // deleteArticle 실습
   const deleteArticleData = await article.deleteArticle(createArticleData.id);
   console.log(deleteArticleData);
+} catch (err) {
+  console.log(err.message);
+}
+
+try {
+  const productList = await product.getProuductList({
+    page: 1,
+    pageSize: 10,
+    keyword: "제품",
+  });
+  console.log(productList);
+  const productData = await product.getProduct(4029);
+  console.log(productData);
+
+  const createProduct = await product.createProduct({
+    images: ["https://example.com/..."],
+    tags: ["생활용품"],
+    price: 0,
+    description: "string",
+    name: "테스트용",
+  });
+  console.log(createProduct);
+
+  const fetchProduct = await product.patchProduct(createProduct.id, {
+    images: ["https://example.com/..."],
+    tags: ["전자제품"],
+    price: 0,
+    description: "string",
+    name: "수정 상품 이름",
+  });
+  console.log(fetchProduct);
+
+  const deleteProduct = await product.deleteProduct(createProduct.id);
+  console.log(deleteProduct);
 } catch (err) {
   console.log(err.message);
 }
