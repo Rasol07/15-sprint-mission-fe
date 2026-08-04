@@ -1,72 +1,82 @@
 import article from "./ArticleService.mjs";
 import product from "./ProductService.mjs";
+const RUN_ARTICLE = true;
+const RUN_PRODUCT = true;
 
-try {
-  // getArticleList 실습
-  const articleDatas = await article.getArticleList({
-    page: 1,
-    pageSize: 10,
-    keyword: "게시글 수정",
-  });
-  console.log(articleDatas);
-
-  //   // getArticle 실습
-  const articleData = await article.getArticle(1667);
-  console.log(articleData);
-
-  // createArticle 실습
-  const createArticleData = await article.createArticle({
-    image: "https://example.com/...",
-    content: "게시글 내용입니다.",
-    title: "게시글 제목입니다.",
-  });
-  console.log(createArticleData);
-
-  // patchArticle 실습
-  const patchArticleData = await article.patchArticle(createArticleData.id, {
-    image: "https://example.com/...",
-    content: "게시글 수정입니다.",
-    title: "게시글 제목입니다.",
-  });
-  console.log(patchArticleData);
-
-  // deleteArticle 실습
-  const deleteArticleData = await article.deleteArticle(createArticleData.id);
-  console.log(deleteArticleData);
-} catch (err) {
-  console.log(err.message);
+// 각 해당 CRUD 동작
+async function run(label, fn) {
+  try {
+    const result = await fn();
+    console.log(`------- ${label} -------`);
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.log(err.message);
+  }
 }
 
-try {
-  const productList = await product.getProuductList({
-    page: 1,
-    pageSize: 10,
-    keyword: "제품",
-  });
-  console.log(productList);
-  const productData = await product.getProduct(4029);
-  console.log(productData);
+// article 테스트
+async function testArticleCRUD() {
+  await run("Article 목록 조회", () =>
+    article.getArticleList({
+      page: 1,
+      pageSize: 10,
+      keyword: "게시글 수정",
+    }),
+  );
 
-  const createProduct = await product.createProduct({
-    images: ["https://example.com/..."],
-    tags: ["생활용품"],
-    price: 0,
-    description: "string",
-    name: "테스트용",
-  });
-  console.log(createProduct);
+  const createdArticle = await run("Article 생성", () =>
+    article.createArticle({
+      image: "https://example.com/...",
+      content: "게시글 내용입니다.",
+      title: "게시글 제목입니다.",
+    }),
+  );
 
-  const fetchProduct = await product.patchProduct(createProduct.id, {
-    images: ["https://example.com/..."],
-    tags: ["전자제품"],
-    price: 0,
-    description: "string",
-    name: "수정 상품 이름",
-  });
-  console.log(fetchProduct);
-
-  const deleteProduct = await product.deleteProduct(createProduct.id);
-  console.log(deleteProduct);
-} catch (err) {
-  console.log(err.message);
+  await run("Article 단일 조회", () => article.getArticle(createdArticle.id));
+  await run("Article 수정", () =>
+    article.patchArticle(createdArticle.id, {
+      image: "https://example.com/...",
+      content: "게시글 수정입니다.",
+      title: "게시글 제목입니다.",
+    }),
+  );
+  await run("Article 삭제", () => article.deleteArticle(createdArticle.id));
 }
+
+// product 테스트
+async function testProductCRUD() {
+  await run("Product 목록 조회", () =>
+    product.getProuductList({
+      page: 1,
+      pageSize: 10,
+      keyword: "제품",
+    }),
+  );
+
+  const createdProduct = await run("Product 생성", () =>
+    product.createProduct({
+      images: ["https://example.com/..."],
+      tags: ["생활용품"],
+      price: 0,
+      description: "string",
+      name: "테스트용",
+    }),
+  );
+
+  await run("Proudct 단일 조회", () => product.getProduct(createdProduct.id));
+  await run("Proudct 수정 ", () =>
+    product.patchProduct(createdProduct.id, {
+      images: ["https://example.com/..."],
+      tags: ["전자제품"],
+      price: 0,
+      description: "string",
+      name: "수정 상품 이름",
+    }),
+  );
+
+  await run("Product 삭제", () => product.deleteProduct(createdProduct.id));
+}
+
+if (RUN_ARTICLE) testArticleCRUD();
+if (RUN_PRODUCT) testProductCRUD();

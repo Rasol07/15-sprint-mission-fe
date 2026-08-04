@@ -12,8 +12,8 @@ async function getProuductList({ page, pageSize, keyword }) {
   productURL.searchParams.set("page", page);
   productURL.searchParams.set("pageSize", pageSize);
   productURL.searchParams.set("keyword", keyword);
-  console.log(productURL);
 
+  const response = await fetch(productURL);
   return checkResponse(response);
 }
 

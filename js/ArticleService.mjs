@@ -21,9 +21,6 @@ async function getArticleList({ page, pageSize, keyword }) {
 async function getArticle(id) {
   return fetch(`${BASE_URL}/articles/${id}`, {
     method: "GET",
-  }).then((response) => {});
-  const response = await fetch(`${BASE_URL}/articles/${id}`, {
-    method: "GET",
   }).then(checkResponse);
 }
 
@@ -54,8 +51,7 @@ async function patchArticle(id, { image, content, title }) {
 }
 
 async function deleteArticle(id) {
-  return;
-  const response = await fetch(`${BASE_URL}/articles/${id}`, {
+  return fetch(`${BASE_URL}/articles/${id}`, {
     method: "DELETE",
   }).then(checkResponse);
 }
