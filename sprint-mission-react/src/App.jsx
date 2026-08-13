@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "./api/products";
 import "./App.css";
+import { usePagination } from "./hooks/usePagination";
 
 const PAGE_PER_PRODUCTS = 5;
+const INITAL_PAGE = 1;
 
 function App() {
   // product 값 저장
   const [products, setProducts] = useState([]);
-  const [totalCount, setTotalCount] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(totalCount / PAGE_PER_PRODUCTS);
+  const { currentPage, totalPages, goToPage, setTotalCount } = usePagination(
+    INITAL_PAGE,
+    PAGE_PER_PRODUCTS,
+  );
 
   useEffect(() => {
     const productDataLoad = async () => {
@@ -28,15 +31,7 @@ function App() {
     };
 
     productDataLoad();
-  }, [currentPage]);
-
-  // page 이동
-  const goToPage = (pageNumber) => {
-    if (pageNumber <= 0 || pageNumber > totalPages) {
-      throw new Error("페이지 갯수가 맞지 않습니다.");
-    }
-    setCurrentPage(pageNumber);
-  };
+  }, [currentPage, setTotalCount]);
 
   return (
     <div>
