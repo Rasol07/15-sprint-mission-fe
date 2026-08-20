@@ -1,3 +1,5 @@
+import styles from "./Pagination.module.css";
+
 export function Pagination({
   currentPage,
   totalPages,
@@ -23,7 +25,7 @@ export function Pagination({
   };
 
   return (
-    <nav>
+    <nav className={styles.paginationContainer}>
       <button type="button" onClick={goToPrevGroup} disabled={startPage === 1}>
         &lt;
       </button>
@@ -34,6 +36,7 @@ export function Pagination({
           type="button"
           onClick={() => onPageChange(pageNumber)}
           aria-current={currentPage === pageNumber ? "page" : undefined}
+          className={currentPage === pageNumber ? styles.selected : ""}
         >
           {pageNumber}
         </button>

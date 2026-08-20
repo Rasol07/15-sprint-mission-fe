@@ -11,9 +11,8 @@ function App() {
         <h2 className="bestProductTitle">배스트 상품</h2>
         <BestProductsList />
       </div>
-      <div>
-        <ProductList />
-      </div>
+
+      <ProductList />
     </div>
   );
 }

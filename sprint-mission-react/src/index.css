@@ -75,6 +75,15 @@
   --Secondary-600: #4b5563;
   --Secondary-800: #1f2937;
   --Secondary-900: #111827;
+  --Primary-100: #3692ff;
+  --Cool-Gray-100: #f3f4f6;
+  --Cool-Gray-200: #e5e7eb;
+  --Cool-Gray-500: #6b7280;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Pretendard";
 }
 
 .mainContainer {
@@ -82,6 +91,4 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 40px;
-
-  font-family: "Pretendard";
 }

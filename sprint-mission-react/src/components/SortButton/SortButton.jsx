@@ -1,4 +1,6 @@
 import { useState } from "react";
+import dropDownIcon from "../../assets/ic_arrow_down.svg";
+import styles from "./SortButton.module.css";
 
 export function SortButton({ standard, onChange }) {
   // 열려있음 : 누가 어떤 버튼을 눌렀다. -> 그 버튼 값으로 standard를 변화해야함.
@@ -15,12 +17,16 @@ export function SortButton({ standard, onChange }) {
 
   return (
     <div>
-      <button onClick={() => setIsOpen((prev) => !prev)}>
+      <div
+        className={styles.sortButton}
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
         {SORT_OPTION.find((option) => option.value === standard)?.label ??
           "정렬"}
-      </button>
+        <img src={dropDownIcon} alt="드롭다운 아이콘" />
+      </div>
       {isOpen && (
-        <ul>
+        <ul className={styles.sortList}>
           {SORT_OPTION.map((option) => (
             <li key={option.value}>
               <button
