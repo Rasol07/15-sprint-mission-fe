@@ -70,8 +70,13 @@
   font-display: swap;
 }
 
-@custom-media --tablet (max-width: 744px);
-@custom-media --mobile (max-width: 375px);
+@font-face {
+  font-family: "ROKAF";
+  src: url("./assets/fonts/ROKAF_Sans_Bold.ttf") format("woff2");
+  font-weight: 700;
+  font-style: noremal;
+  font-display: swap;
+}
 
 :root {
   --Secondary-100: #f9faf8;
