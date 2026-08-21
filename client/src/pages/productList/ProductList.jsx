@@ -6,17 +6,21 @@ import { useProducts } from "../../hooks/useProducts";
 import { useState } from "react";
 import styles from "./ProductList.module.css";
 import { ProductCard } from "../productCard/productCard";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 export function ProductList() {
   const [standard, setStandard] = useState("recent");
   const [keyword, setKeyword] = useState("");
+  const isTablet = useMediaQuery("(max-width: 744px)");
+  const isMobile = useMediaQuery("(max-width: 375px)");
+  const pageSize = isMobile ? 4 : isTablet ? 6 : 10;
 
   const { currentPage, totalPages, goToPage, setTotalCount } = usePagination(
     1,
-    10,
+    pageSize,
   );
   const { products, isLoading } = useProducts({
     page: currentPage,
-    pageSize: 10,
+    pageSize,
     standard,
     keyword,
     setTotalCount, // ← usePagination의 setTotalCount를 그대로 넘김

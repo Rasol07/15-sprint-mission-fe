@@ -12,7 +12,6 @@ function App() {
       <Header />
       <div className="mainContainer">
         <div>
-          <h2 className="bestProductTitle">배스트 상품</h2>
           <BestProductsList />
         </div>
 
