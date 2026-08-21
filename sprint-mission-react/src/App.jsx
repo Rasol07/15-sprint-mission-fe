@@ -1,4 +1,6 @@
 import "./App.css";
+import { Footer } from "./components/Footer/Footer";
+import { Header } from "./components/Header/Header";
 import { BestProductsList } from "./pages/BestProductList/BestProductsList";
 import { ProductList } from "./pages/productList/ProductList";
 
@@ -6,13 +8,17 @@ function App() {
   // product 값 저장
 
   return (
-    <div className="mainContainer">
-      <div>
-        <h2 className="bestProductTitle">배스트 상품</h2>
-        <BestProductsList />
-      </div>
+    <div>
+      <Header />
+      <div className="mainContainer">
+        <div>
+          <h2 className="bestProductTitle">배스트 상품</h2>
+          <BestProductsList />
+        </div>
 
-      <ProductList />
+        <ProductList />
+      </div>
+      <Footer />
     </div>
   );
 }

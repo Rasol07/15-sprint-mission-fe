@@ -1,0 +1,75 @@
+.headerContainer {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  padding: 0 200px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dfdfdf;
+  background: #fff;
+}
+
+.mainTitle {
+  display: flex;
+  width: 153px;
+  height: 51px;
+  padding: 5.017px 0 5.848px 0;
+  justify-content: center;
+  align-items: center;
+  gap: 8.592px;
+  flex-shrink: 0;
+  cursor: pointer;
+  & img {
+    width: 40px;
+    height: 40.135px;
+    flex-shrink: 0;
+  }
+
+  & h2 {
+    color: #3692ff;
+    font-size: 25.633px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
+
+.mainNavContainer {
+  display: flex;
+  width: 893px;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+
+  & h3 {
+    display: flex;
+    padding: 21px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: var(--SEcondary-600);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    cursor: pointer;
+  }
+}
+
+.loginButton {
+  display: flex;
+  height: 42px;
+  padding: 12px 23px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--Primary-100);
+  color: var(--Cool-Gray-100);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 26px;
+  border: 0px;
+  cursor: pointer;
+}

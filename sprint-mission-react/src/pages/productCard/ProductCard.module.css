@@ -4,7 +4,7 @@
   align-items: flex-start;
   gap: 16px;
   background: #fcfcfc;
-
+  cursor: pointer;
   & img {
     width: 221px;
     height: 221px;
