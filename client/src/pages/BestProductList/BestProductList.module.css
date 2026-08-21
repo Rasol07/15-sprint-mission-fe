@@ -1,4 +1,5 @@
 .bestProductListContainer {
+  margin: 69px;
   & ul {
     display: flex;
     align-items: flex-start;

@@ -36,7 +36,7 @@
 
 .mainNavContainer {
   display: flex;
-  width: 893px;
+
   align-items: center;
   gap: 24px;
   flex-shrink: 0;
@@ -72,4 +72,22 @@
   line-height: 26px;
   border: 0px;
   cursor: pointer;
+}
+.desktopTabletOnly {
+  display: block;
+}
+
+@media (max-width: 744px) {
+  .headerContainer {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 375px) {
+  .headerContainer {
+    padding: 0 16px;
+  }
+  .desktopTabletOnly {
+    display: none;
+  }
 }

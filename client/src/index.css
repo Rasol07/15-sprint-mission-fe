@@ -70,6 +70,9 @@
   font-display: swap;
 }
 
+@custom-media --tablet (max-width: 744px);
+@custom-media --mobile (max-width: 375px);
+
 :root {
   --Secondary-100: #f9faf8;
   --Secondary-400: #9ca3af;

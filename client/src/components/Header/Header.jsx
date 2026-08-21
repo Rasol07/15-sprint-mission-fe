@@ -6,7 +6,11 @@ export function Header() {
     <div className={styles.headerContainer}>
       <div className={styles.mainNavContainer}>
         <div className={styles.mainTitle}>
-          <img src={mainIcon} alt="메인_아이콘" />
+          <img
+            className={styles.desktopTabletOnly}
+            src={mainIcon}
+            alt="메인_아이콘"
+          />
           <h2>판다마켓</h2>
         </div>
         <h3>자유게시판</h3>
