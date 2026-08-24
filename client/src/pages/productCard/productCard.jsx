@@ -3,7 +3,7 @@ import styles from "./ProductCard.module.css";
 
 export function ProductCard({ product }) {
   return (
-    <div className={styles.productCardCotnainer}>
+    <div className={styles.productCardContainer}>
       <img src={product.images?.[0]} alt="상품 이미지" />
       <div className={styles.productCardContent}>
         <h3>{product.name}</h3>

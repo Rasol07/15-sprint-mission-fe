@@ -1,15 +1,7 @@
-import { useRef } from "react";
 import searchIcon from "../../assets/ic_search.svg";
 import styles from "./SearchInput.module.css";
 
-export function SearchInput({ onChange }) {
-  // useRef : 왜냐하면 그 react state로 매 글자 글자 추적을 안함.
-  const inputRef = useRef(null);
-
-  const handleSearch = () => {
-    onChange(inputRef.current.value);
-  };
-
+export function SearchInput({ inputRef }) {
   return (
     <div className={styles.searchHeader}>
       <div className={styles.searchBox}>
@@ -20,7 +12,6 @@ export function SearchInput({ onChange }) {
           placeholder="검색할 상품을 입력해주세요"
         />
       </div>
-      <button onClick={handleSearch}>상품 등록하기</button>
     </div>
   );
 }

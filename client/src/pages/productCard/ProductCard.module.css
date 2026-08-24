@@ -1,4 +1,4 @@
-.productCardCotnainer {
+.productCardContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -46,5 +46,25 @@
   & img {
     width: 16px;
     height: 16px;
+  }
+}
+
+@media (max-width: 744px) {
+  .productCardContainer {
+    & img {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .productCardContainer {
+    & img {
+      width: 100%;
+    }
+  }
+
+  .productCardContent {
+    width: 100%;
   }
 }
