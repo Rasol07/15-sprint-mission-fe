@@ -1,9 +1,9 @@
-const API_BASE_URL = "https://panda-market-api.vercel.app";
+const API_BASE_URL = "http://localhost:5001";
 
 //GET : favorite
 export const getProducts = async ({
   page = 1,
-  pageSize = 10,
+  pageSize = 4,
   standard = "recent",
   keyword = "",
 }) => {
