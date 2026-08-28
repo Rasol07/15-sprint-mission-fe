@@ -25,7 +25,7 @@ export function ProductList() {
     pageSize,
     standard,
     keyword,
-    setTotalCount, // ← usePagination의 setTotalCount를 그대로 넘김
+    setTotalCount,
   });
 
   const handleSearch = () => {
