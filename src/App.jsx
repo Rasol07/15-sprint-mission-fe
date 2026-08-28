@@ -1,8 +1,10 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
-import { BestProductsList } from "./pages/BestProductList/BestProductsList";
+// import { BestProductsList } from "./pages/BestProductList/BestProductsList";
 import { ProductList } from "./pages/productList/ProductList";
+import { ProductRegistration } from "./pages/ProductRegistration/ProductRegistration";
 
 function App() {
   // product 값 저장
@@ -11,11 +13,14 @@ function App() {
     <div>
       <Header />
       <div className="mainContainer">
-        <div>
+        <Routes>
+          {/* 차후에 경로 변경해야함 */}
+          <Route path="/" element={<ProductList />}></Route>
+          <Route path="/registration" element={<ProductRegistration />}></Route>
+        </Routes>
+        {/* <div>
           <BestProductsList />
-        </div>
-
-        <ProductList />
+        </div> */}
       </div>
       <Footer />
     </div>

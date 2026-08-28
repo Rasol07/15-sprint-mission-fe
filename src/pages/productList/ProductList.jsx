@@ -8,6 +8,7 @@ import styles from "./ProductList.module.css";
 import { ProductCard } from "../productCard/productCard";
 import { SearchButton } from "../../components/SearchButton/SearchButton";
 import { useDevice } from "../../hooks/useDevice";
+import { useNavigate } from "react-router-dom";
 
 export function ProductList() {
   const [standard, setStandard] = useState("recent");
@@ -15,7 +16,7 @@ export function ProductList() {
   const { isTablet, isMobile } = useDevice();
   const pageSize = isMobile ? 4 : isTablet ? 6 : 10;
   const searchInputRef = useRef(null);
-
+  const navigate = useNavigate();
   const { currentPage, totalPages, goToPage, setTotalCount } = usePagination(
     1,
     pageSize,
@@ -28,8 +29,14 @@ export function ProductList() {
     setTotalCount,
   });
 
+  // 검색 관련 수정 필요
   const handleSearch = () => {
     setKeyword(searchInputRef.current.value);
+  };
+
+  //네비게이션
+  const handleRegistration = () => {
+    navigate("/registration");
   };
 
   return (
@@ -37,7 +44,10 @@ export function ProductList() {
       <div className={styles.productListHeader}>
         <div className={styles.headerTop}>
           <h2>판매 중인 상품</h2>
-          <SearchButton onClick={handleSearch} className={styles.searchBtn} />
+          <SearchButton
+            onClick={handleRegistration}
+            className={styles.searchBtn}
+          />
         </div>
         <div className={styles.headerBottom}>
           <SearchInput inputRef={searchInputRef} className={styles.search} />
