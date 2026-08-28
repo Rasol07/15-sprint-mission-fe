@@ -1,4 +1,5 @@
 .sortWrapper {
+  width: fit-content;
   position: relative;
 }
 

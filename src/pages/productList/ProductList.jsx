@@ -6,14 +6,13 @@ import { useProducts } from "../../hooks/useProducts";
 import { useRef, useState } from "react";
 import styles from "./ProductList.module.css";
 import { ProductCard } from "../productCard/productCard";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { SearchButton } from "../../components/SearchButton/SearchButton";
+import { useDevice } from "../../hooks/useDevice";
 
 export function ProductList() {
   const [standard, setStandard] = useState("recent");
   const [keyword, setKeyword] = useState("");
-  const isTablet = useMediaQuery("(max-width: 744px)");
-  const isMobile = useMediaQuery("(max-width: 375px)");
+  const { isTablet, isMobile } = useDevice();
   const pageSize = isMobile ? 4 : isTablet ? 6 : 10;
   const searchInputRef = useRef(null);
 
@@ -33,49 +32,22 @@ export function ProductList() {
     setKeyword(searchInputRef.current.value);
   };
 
-  if (isMobile) {
-    return (
-      <div className={styles.productListContainer}>
-        <div className={styles.productListHeader}>
+  return (
+    <div className={styles.productListContainer}>
+      <div className={styles.productListHeader}>
+        <div className={styles.headerTop}>
           <h2>판매 중인 상품</h2>
-          <SearchButton onClick={handleSearch} />
+          <SearchButton onClick={handleSearch} className={styles.searchBtn} />
         </div>
-        <div className={styles.mobileSort}>
-          <SearchInput inputRef={searchInputRef} />
+        <div className={styles.headerBottom}>
+          <SearchInput inputRef={searchInputRef} className={styles.search} />
           <SortButton
             standard={standard}
             onChange={setStandard}
             mobileIcon={isMobile}
+            className={styles.sort}
           />
         </div>
-        <div className={styles.productCardsContainer}>
-          {isLoading
-            ? "로딩 중..."
-            : products.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-        </div>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={goToPage}
-        />
-      </div>
-    );
-  }
-
-  return (
-    <div className={styles.productListContainer}>
-      <div className={styles.productListHeader}>
-        <h2>판매 중인 상품</h2>
-
-        <SearchInput inputRef={searchInputRef} />
-        <SearchButton onClick={handleSearch} />
-        <SortButton
-          standard={standard}
-          onChange={setStandard}
-          mobileIcon={isMobile}
-        />
       </div>
       <div className={styles.productCardsContainer}>
         {isLoading

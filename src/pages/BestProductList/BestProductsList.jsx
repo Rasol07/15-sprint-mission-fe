@@ -1,9 +1,12 @@
+import { useDevice } from "../../hooks/useDevice";
 import { useProducts } from "../../hooks/useProducts";
 import { BestProductCard } from "../BestProductCard/BestProductCard";
 import styles from "./BestProductList.module.css";
 
 export function BestProductsList() {
-  const { products } = useProducts({ standard: "favorite", pageSize: 4 });
+  const { isTablet, isMobile } = useDevice();
+  const pageSize = isMobile ? 1 : isTablet ? 2 : 4;
+  const { products } = useProducts({ standard: "favorite", pageSize });
 
   return (
     <div className={styles.bestProductListContainer}>

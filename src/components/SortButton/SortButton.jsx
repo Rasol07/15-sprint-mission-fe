@@ -3,7 +3,7 @@ import dropDownIcon from "../../assets/ic_arrow_down.svg";
 import mobileSortIcon from "../../assets/ic_sort.svg";
 import styles from "./SortButton.module.css";
 
-export function SortButton({ standard, onChange, mobileIcon }) {
+export function SortButton({ standard, onChange, mobileIcon, className }) {
   const SORT_OPTION = [
     { value: "recent", label: "최신순" },
     { value: "favorite", label: "인기순" },
@@ -11,7 +11,7 @@ export function SortButton({ standard, onChange, mobileIcon }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={styles.sortWrapper}>
+    <div className={`${styles.sortWrapper} ${className ?? ""}`}>
       <div
         className={mobileIcon ? styles.mobileIcon : styles.sortButton}
         onClick={() => setIsOpen((prev) => !prev)}
