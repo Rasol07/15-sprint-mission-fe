@@ -3,6 +3,7 @@ import { FormInput } from "../../components/FormInput/FormInput";
 import styles from "./ProductRegistration.module.css";
 import { createProduct } from "../../api/products";
 import { useProductValidate } from "../../hooks/useProductValidate";
+import deleteIcon from "../../assets/ic_X.svg";
 
 export function ProductRegistration() {
   const [formData, setFormData] = useState({
@@ -111,18 +112,17 @@ export function ProductRegistration() {
       <div className={styles.tagList}>
         {formData.tags.map((tag, index) => (
           <span key={index} className={styles.tagChip}>
-            #{tag}
-            <button
-              type="button"
+            # {tag}
+            <img
+              src={deleteIcon}
+              alt="삭제_아이콘"
               onClick={() =>
                 setFormData((prev) => ({
                   ...prev,
                   tags: prev.tags.filter((_, i) => i !== index),
                 }))
               }
-            >
-              x
-            </button>
+            />
           </span>
         ))}
       </div>

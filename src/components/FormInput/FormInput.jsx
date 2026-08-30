@@ -20,6 +20,7 @@ export function FormInput({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          className={error ? styles.error : ""}
         ></textarea>
       ) : (
         <input
@@ -29,10 +30,10 @@ export function FormInput({
           onChange={onChange}
           placeholder={placeholder}
           onKeyDown={onKeyDown}
-          className={styles.inputContent}
+          className={error ? styles.error : ""}
         />
       )}
-      <p>{error}</p>
+      <p className={styles.errorParagraph}>{error}</p>
     </label>
   );
 }
