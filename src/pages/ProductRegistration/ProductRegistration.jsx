@@ -4,6 +4,7 @@ import styles from "./ProductRegistration.module.css";
 import { createProduct } from "../../api/products";
 import { useProductValidate } from "../../hooks/useProductValidate";
 import deleteIcon from "../../assets/ic_X.svg";
+import { useNavigate } from "react-router-dom";
 
 export function ProductRegistration() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ export function ProductRegistration() {
     tags: [],
     images: [],
   });
+  const navigate = useNavigate();
   const [tagInput, setTagInput] = useState("");
   const { errors, isValidate } = useProductValidate(formData);
 
@@ -49,14 +51,13 @@ export function ProductRegistration() {
   };
 
   const handleSubmit = async (formData) => {
-    await createProduct(formData);
-    setFormData({
-      name: "",
-      description: "",
-      price: "",
-      tags: [],
-      images: [],
-    });
+    if (!isValidate) return;
+    try {
+      await createProduct(formData);
+      navigate("/items");
+    } catch (err) {
+      console.error(err);
+    }
   };
   return (
     <div className={styles.registrationContainer}>
