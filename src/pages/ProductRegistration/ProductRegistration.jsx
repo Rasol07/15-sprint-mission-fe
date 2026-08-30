@@ -2,23 +2,22 @@ import { useEffect, useState } from "react";
 import { FormInput } from "../../components/FormInput/FormInput";
 import styles from "./ProductRegistration.module.css";
 import { createProduct } from "../../api/products";
+import { useProductValidate } from "../../hooks/useProductValidate";
 
 export function ProductRegistration() {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    price: 0,
+    price: "",
     tags: [],
     images: [],
   });
   const [tagInput, setTagInput] = useState("");
-  const [isValidate, setIsValidate] = useState(false);
-
-  // tag 엔터키 눌렀을 때 배열로 하나하나 들어가게 만들어야 함.
-  // 엔터키 눌렀을 때 그 버튼 같은 거 생겨나야함.
+  const { errors, isValidate } = useProductValidate(formData);
 
   useEffect(() => {
     console.log(formData);
+    console.log(errors);
   }, [formData]);
 
   const handleChange = (event) => {
@@ -49,8 +48,14 @@ export function ProductRegistration() {
   };
 
   const handleSubmit = async (formData) => {
-    const product = await createProduct(formData);
-    console.log(product);
+    await createProduct(formData);
+    setFormData({
+      name: "",
+      description: "",
+      price: "",
+      tags: [],
+      images: [],
+    });
   };
   return (
     <div className={styles.registrationContainer}>
@@ -72,6 +77,7 @@ export function ProductRegistration() {
         value={formData.name}
         onChange={handleChange}
         placeholder="상품명을 입력해주세요"
+        error={errors.name}
       />
 
       <FormInput
@@ -81,6 +87,7 @@ export function ProductRegistration() {
         onChange={handleChange}
         placeholder="상품 소개를 입력해주세요"
         multiline
+        error={errors.description}
       />
 
       <FormInput
@@ -89,6 +96,7 @@ export function ProductRegistration() {
         value={formData.price}
         onChange={handleChange}
         placeholder="판매 가격을 입력해주세요"
+        error={errors.price}
       />
 
       <FormInput
@@ -98,6 +106,7 @@ export function ProductRegistration() {
         onChange={handleTagInputChange}
         onKeyDown={handleTagKeyDown}
         placeholder="태그를 입력해주세요"
+        error={errors.tags}
       />
       <div className={styles.tagList}>
         {formData.tags.map((tag, index) => (

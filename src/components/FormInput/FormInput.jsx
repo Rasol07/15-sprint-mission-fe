@@ -9,6 +9,7 @@ export function FormInput({
   onKeyDown,
   placeholder,
   multiline = false,
+  error,
 }) {
   return (
     <label className={styles.inputContainer}>
@@ -31,6 +32,7 @@ export function FormInput({
           className={styles.inputContent}
         />
       )}
+      <p>{error}</p>
     </label>
   );
 }
