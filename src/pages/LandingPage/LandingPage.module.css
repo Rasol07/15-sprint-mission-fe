@@ -1,5 +1,4 @@
 .landingHeader {
-  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +7,7 @@
 
 .landingHeaderContainer {
   display: flex;
-  width: 100%;
+
   padding-top: 200px;
   align-items: flex-end;
   justify-content: center;
@@ -19,6 +18,11 @@
   display: flex;
   align-items: center;
   gap: 7px;
+
+  & img {
+    width: 100%;
+    max-width: 744px;
+  }
 }
 
 .landingHeaderTitle {
@@ -72,6 +76,10 @@
   justify-content: center;
   align-items: center;
   gap: 64px;
+
+  & img {
+    width: 100%;
+  }
 }
 
 .landingContentTitle {
@@ -137,5 +145,41 @@
 
   .landingContentTitle {
     align-self: flex-start;
+  }
+}
+
+@media (max-width: 375px) {
+  .landingHeaderTitle {
+    justify-content: center;
+    align-items: center;
+    & h2 {
+      text-align: center;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+    }
+
+    & button {
+      padding: 12px 71px;
+    }
+  }
+
+  .landingContentList {
+    padding: 0 15px;
+    margin-bottom: 40px;
+  }
+  .landingContentTitle {
+    & h2 {
+      font-size: 24px;
+
+      line-height: 32px;
+    }
+
+    & p {
+      font-size: 16px;
+
+      line-height: 26px;
+    }
   }
 }
