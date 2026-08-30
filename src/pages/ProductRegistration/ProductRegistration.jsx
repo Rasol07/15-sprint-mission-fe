@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FormInput } from "../../components/FormInput/FormInput";
 import styles from "./ProductRegistration.module.css";
 import { createProduct } from "../../api/products";
@@ -17,11 +17,6 @@ export function ProductRegistration() {
   const navigate = useNavigate();
   const [tagInput, setTagInput] = useState("");
   const { errors, isValidate } = useProductValidate(formData);
-
-  useEffect(() => {
-    console.log(formData);
-    console.log(errors);
-  }, [formData]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
