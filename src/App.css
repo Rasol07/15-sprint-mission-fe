@@ -9,6 +9,10 @@
   margin: 0 auto;
 }
 
+.landingMainContainer {
+  width: 100%;
+}
+
 * {
   box-sizing: border-box;
 }

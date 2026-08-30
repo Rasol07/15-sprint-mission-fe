@@ -6,6 +6,7 @@ export function FormInput({
   type,
   value,
   onChange,
+  onKeyDown,
   placeholder,
   multiline = false,
 }) {
@@ -26,6 +27,7 @@ export function FormInput({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          onKeyDown={onKeyDown}
           className={styles.inputContent}
         />
       )}

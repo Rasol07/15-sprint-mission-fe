@@ -79,9 +79,11 @@
 }
 
 :root {
+  --Secondary-50: #f9fafb;
   --Secondary-100: #f9faf8;
   --Secondary-400: #9ca3af;
   --Secondary-600: #4b5563;
+  --Secondary-700: #374151;
   --Secondary-800: #1f2937;
   --Secondary-900: #111827;
   --Primary-100: #3692ff;

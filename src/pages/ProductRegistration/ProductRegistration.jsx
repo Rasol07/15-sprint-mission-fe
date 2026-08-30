@@ -11,7 +11,7 @@ export function ProductRegistration() {
     tags: [],
     images: [],
   });
-
+  const [tagInput, setTagInput] = useState("");
   const [isValidate, setIsValidate] = useState(false);
 
   // tag 엔터키 눌렀을 때 배열로 하나하나 들어가게 만들어야 함.
@@ -28,6 +28,24 @@ export function ProductRegistration() {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleTagKeyDown = (event) => {
+    if (event.key === "Enter") {
+      if (event.nativeEvent.isComposing) return;
+      event.preventDefault();
+      const value = tagInput.trim();
+      if (value === "" || formData.tags.includes(value)) return;
+      setFormData((prev) => ({
+        ...prev,
+        tags: [...prev.tags, value],
+      }));
+      setTagInput("");
+    }
+  };
+
+  const handleTagInputChange = (e) => {
+    setTagInput(e.target.value);
   };
 
   const handleSubmit = async (formData) => {
@@ -76,10 +94,29 @@ export function ProductRegistration() {
       <FormInput
         label="태그"
         name="tags"
-        value={formData.tags}
-        onChange={handleChange}
+        value={tagInput}
+        onChange={handleTagInputChange}
+        onKeyDown={handleTagKeyDown}
         placeholder="태그를 입력해주세요"
       />
+      <div className={styles.tagList}>
+        {formData.tags.map((tag, index) => (
+          <span key={index} className={styles.tagChip}>
+            #{tag}
+            <button
+              type="button"
+              onClick={() =>
+                setFormData((prev) => ({
+                  ...prev,
+                  tags: prev.tags.filter((_, i) => i !== index),
+                }))
+              }
+            >
+              x
+            </button>
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
