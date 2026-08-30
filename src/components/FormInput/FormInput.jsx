@@ -1,3 +1,5 @@
+import styles from "./FormInput.module.css";
+
 export function FormInput({
   label,
   name,
@@ -8,15 +10,15 @@ export function FormInput({
   multiline = false,
 }) {
   return (
-    <label>
-      <span>{label}</span>
+    <label className={styles.inputContainer}>
+      <span className={styles.inputTitle}>{label}</span>
       {multiline ? (
         <textarea
           name={name}
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-        />
+        ></textarea>
       ) : (
         <input
           name={name}
@@ -24,7 +26,8 @@ export function FormInput({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-        ></input>
+          className={styles.inputContent}
+        />
       )}
     </label>
   );

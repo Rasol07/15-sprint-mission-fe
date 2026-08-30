@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import { FormInput } from "../../components/FormInput/FormInput";
 import styles from "./ProductRegistration.module.css";
+import { createProduct } from "../../api/products";
 
 export function ProductRegistration() {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    price: "",
+    price: 0,
     tags: [],
     images: [],
   });
+
+  const [isValidate, setIsValidate] = useState(false);
 
   // tag 엔터키 눌렀을 때 배열로 하나하나 들어가게 만들어야 함.
   // 엔터키 눌렀을 때 그 버튼 같은 거 생겨나야함.
@@ -26,8 +29,25 @@ export function ProductRegistration() {
       [name]: value,
     }));
   };
+
+  const handleSubmit = async (formData) => {
+    const product = await createProduct(formData);
+    console.log(product);
+  };
   return (
-    <div className={styles.inputContainer}>
+    <div className={styles.registrationContainer}>
+      <div className={styles.registrationHeader}>
+        <h2>상품 등록하기</h2>
+        <button
+          className={`${styles.registrationBtn} ${
+            isValidate ? styles.active : ""
+          }`}
+          onClick={() => handleSubmit(formData)}
+        >
+          등록
+        </button>
+      </div>
+
       <FormInput
         label="상품명"
         name="name"

@@ -18,6 +18,7 @@ export const getProducts = async ({
   if (!response.ok) {
     throw new Error("상품 조회에 실패했습니다.");
   }
+
   return response.json();
 };
 
@@ -28,7 +29,7 @@ export const createProduct = async (postData) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringfy(postData),
+    body: JSON.stringify(postData),
   });
 
   if (!response.ok) {
