@@ -2,10 +2,11 @@ import BoardSearch from "../../components/BoardSearch/BoardSearch";
 import BoardList from "../../components/BoardList/BoardList";
 
 export default async function BoardsPage({ searchParams }) {
-  const { q = "" } = await searchParams;
+  const { q = "", orderBy } = await searchParams;
   const keyword = typeof q === "string" ? q : "";
   const trimmed = keyword.trim();
-  const query = new URLSearchParams({ keyword: trimmed });
+  const sort = orderBy === "asc" ? "asc" : "desc";
+  const query = new URLSearchParams({ keyword: trimmed, orderBy: sort });
   const response = await fetch(
     `http://localhost:5001/articles?${query.toString()}`,
     { cache: "no-store" },
