@@ -37,7 +37,7 @@ export default async function BoardsPage({ searchParams }) {
       <p>{trimmed}</p>
       <PaginationNext
         currentPage={Number(page)}
-        totalPage={count}
+        totalCount={count}
         limit={limit}
       />
     </div>
