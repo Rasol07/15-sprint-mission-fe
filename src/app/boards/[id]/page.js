@@ -1,3 +1,4 @@
+import CommentForm from "../../../components/CommentForm/CommentForm";
 import CommentList from "../../../components/CommentList/CommentList";
 
 export default async function ArticlePage({ params }) {
@@ -25,6 +26,7 @@ export default async function ArticlePage({ params }) {
         <p>{article.content}</p>
       </section>
       <div> 댓글 부분 </div>
+      <CommentForm id={id} />
       <CommentList comments={comments} />
     </div>
   );
