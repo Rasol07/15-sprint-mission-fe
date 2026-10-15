@@ -20,7 +20,7 @@ export function Header() {
 
           <h2 onClick={() => router.push("/")}>판다마켓</h2>
         </div>
-        <h3>자유게시판</h3>
+        <h3 onClick={() => router.push("/boards")}>자유게시판</h3>
         <h3 onClick={() => router.push("/items")}>중고마켓</h3>
       </div>
       <button className={styles.loginButton}>로그인</button>

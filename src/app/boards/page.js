@@ -1,6 +1,7 @@
 import BoardSearch from "../../components/BoardSearch/BoardSearch";
 import BoardList from "../../components/BoardList/BoardList";
 import PaginationNext from "../../components/PaginationNext/PagiantionNext";
+import WriteButton from "../../components/WriteButton/WriterButton";
 
 export default async function BoardsPage({ searchParams }) {
   const { q = "", orderBy, page = 1 } = await searchParams;
@@ -31,7 +32,7 @@ export default async function BoardsPage({ searchParams }) {
   console.log(count);
   return (
     <div>
-      <p>안녕하세요</p>
+      <WriteButton />
       <BoardSearch />
       <BoardList articles={data} />
       <p>{trimmed}</p>
