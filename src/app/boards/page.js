@@ -26,13 +26,15 @@ export default async function BoardsPage({ searchParams }) {
 
   return (
     <div className={styles.container}>
-      <h1>베스트 게시글</h1>
+      <h1 className={styles.title}>베스트 게시글</h1>
       <BestBoardList articles={latestArticles} />
-      <h1>게시글</h1>
-      <WriteButton />
+      <div className={styles.boardHeader}>
+        <h1 className={styles.title}>게시글</h1>
+        <WriteButton />
+      </div>
       <BoardSearch />
       <BoardList articles={data} />
-      <p>{trimmed}</p>
+
       <PaginationNext
         currentPage={Number(page)}
         totalCount={count}

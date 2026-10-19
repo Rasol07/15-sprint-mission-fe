@@ -9,3 +9,15 @@ export const container = style({
   flexDirection: "column",
   gap: 40,
 });
+
+export const title = style({
+  fontSize: 20,
+  fontWeight: 700,
+});
+
+export const boardHeader = style({
+  width: "100%",
+  height: 42,
+  display: "flex",
+  justifyContent: "space-between",
+});
