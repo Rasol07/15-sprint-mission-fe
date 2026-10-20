@@ -34,6 +34,7 @@ export const title = style({
   lineHeight: "32px",
   color: "#1F2937",
   overflowWrap: "anywhere",
+  "@media": { "(max-width: 743px)": { fontSize: 18, lineHeight: "26px" } },
 });
 
 export const thumbnail = style({

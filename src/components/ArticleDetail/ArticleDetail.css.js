@@ -93,6 +93,7 @@ export const content = style({
   lineHeight: "26px",
   whiteSpace: "pre-wrap",
   overflowWrap: "anywhere",
+  "@media": { "(max-width: 743px)": { fontSize: 16 } },
 });
 export const menu = style({ position: "relative", flexShrink: 0 });
 export const menuTrigger = style({
@@ -120,6 +121,7 @@ export const menuPanel = style({
   border: "1px solid var(--Cool-Gray-200)",
   borderRadius: 8,
   overflow: "hidden",
+  "@media": { "(max-width: 743px)": { width: 102 } },
 });
 export const menuItem = style({
   display: "block",

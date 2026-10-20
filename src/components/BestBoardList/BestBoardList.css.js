@@ -4,6 +4,13 @@ export const list = style({
   gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
   gap: 24,
   width: "100%",
+  "@media": {
+    "(max-width: 1199px)": {
+      gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+      gap: 16,
+    },
+    "(max-width: 743px)": { gridTemplateColumns: "minmax(0, 1fr)" },
+  },
 });
 
 export const card = style({
@@ -17,6 +24,17 @@ export const card = style({
   display: "flex",
   flexDirection: "column",
   cursor: "pointer",
+  "@media": {
+    "(max-width: 1199px)": {
+      maxWidth: "none",
+      height: 198,
+      paddingBottom: 16,
+      selectors: { "&:nth-child(n + 3)": { display: "none" } },
+    },
+    "(max-width: 743px)": {
+      selectors: { "&:nth-child(n + 2)": { display: "none" } },
+    },
+  },
 });
 
 export const badge = style({
@@ -43,6 +61,7 @@ export const content = style({
   height: 72,
   flexShrink: 0,
   marginBottom: 16,
+  "@media": { "(max-width: 1199px)": { height: 80, marginBottom: 32 } },
 });
 
 export const title = style({
@@ -57,6 +76,13 @@ export const title = style({
   display: "-webkit-box",
   WebkitBoxOrient: "vertical",
   WebkitLineClamp: 2,
+  "@media": {
+    "(max-width: 1199px)": {
+      fontSize: 18,
+      lineHeight: "26px",
+      WebkitLineClamp: 3,
+    },
+  },
 });
 
 export const thumbnail = style({

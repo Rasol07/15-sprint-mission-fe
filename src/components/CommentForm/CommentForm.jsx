@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { API_BASE_URL } from "../../constants/api";
 import * as styles from "./CommentForm.css.js";
+import { postComment } from "../../api/comment.js";
 
 export default function CommentForm({ id }) {
   const [content, setContent] = useState("");
@@ -21,17 +21,7 @@ export default function CommentForm({ id }) {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/articles/${id}/comments`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          content: content.trim(),
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("댓글 등록 실패");
-      }
+      postComment({ targeType: "articles", targetId: id, content });
       setContent("");
       router.refresh();
     } catch {

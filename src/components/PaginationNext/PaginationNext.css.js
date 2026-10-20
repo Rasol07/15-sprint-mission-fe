@@ -8,6 +8,7 @@ export const container = style({
   gap: 6,
   width: "100%",
   marginBottom: 100,
+  "@media": { "(max-width: 743px)": { gap: 4, marginBottom: 48 } },
 });
 
 export const button = style({
@@ -46,6 +47,7 @@ export const button = style({
     color: "#D1D5DB",
     cursor: "not-allowed",
   },
+  "@media": { "(max-width: 743px)": { width: 36, height: 36, fontSize: 16 } },
 });
 
 export const chevron = style({

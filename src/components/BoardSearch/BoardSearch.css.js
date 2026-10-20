@@ -6,6 +6,7 @@ export const form = style({
   alignItems: "center",
   gap: 16,
   width: "100%",
+  "@media": { "(max-width: 743px)": { gap: 8 } },
 });
 
 export const input = style({
@@ -50,5 +51,8 @@ export const select = style({
   ":focus-visible": {
     outline: "2px solid #3692FF",
     outlineOffset: 2,
+  },
+  "@media": {
+    "(max-width: 743px)": { width: 110, padding: "0 8px", fontSize: 14 },
   },
 });

@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+import { input, button } from "../CommentForm/CommentForm.css.js";
 export const list = style({
   display: "flex",
   flexDirection: "column",
@@ -66,3 +67,28 @@ export const empty = style({
   textAlign: "center",
   lineHeight: "26px",
 });
+
+export const editForm = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: 16,
+});
+export const editInput = style([input, { fontSize: 14, lineHeight: "24px" }]);
+export const editActions = style({
+  display: "flex",
+  justifyContent: "flex-end",
+  gap: 8,
+});
+export const saveButton = style([
+  button,
+  { width: "auto", minWidth: 88, padding: "0 16px" },
+]);
+export const cancelButton = style([
+  button,
+  {
+    width: 74,
+    backgroundColor: "#FFFFFF",
+    color: "var(--Secondary-600)",
+    border: "1px solid var(--Cool-Gray-200)",
+  },
+]);

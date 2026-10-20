@@ -8,6 +8,10 @@ export const container = style({
   display: "flex",
   flexDirection: "column",
   gap: 40,
+  "@media": {
+    "(max-width: 1199px)": { gap: 24 },
+    "(max-width: 743px)": { width: "calc(100% - 32px)", paddingTop: 18 },
+  },
 });
 
 export const title = style({
