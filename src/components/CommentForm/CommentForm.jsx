@@ -2,50 +2,70 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { API_BASE_URL } from "../../constants/api";
+import * as styles from "./CommentForm.css.js";
 
 export default function CommentForm({ id }) {
   const [content, setContent] = useState("");
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
 
     if (!content.trim()) {
       alert("댓글을 입력해주세요.");
       return;
     }
 
+    setIsSubmitting(true);
     try {
-      const response = await fetch(
-        `http://localhost:5001/articles/${id}/comments`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            content: content.trim(),
-          }),
-        },
-      );
+      const response = await fetch(`${API_BASE_URL}/articles/${id}/comments`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: content.trim(),
+        }),
+      });
 
       if (!response.ok) {
-        throw new Error("댓글");
+        throw new Error("댓글 등록 실패");
       }
       setContent("");
       router.refresh();
     } catch {
       alert("댓글 등록에 실패했습니다.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit}
+      aria-busy={isSubmitting}
+    >
+      <div className={styles.field}>
+        <label className={styles.label} htmlFor="comment-content">
+          댓글달기
+        </label>
+        <textarea
+          id="comment-content"
+          className={styles.input}
           value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="댓글을 입력해주세요/"
+          onChange={(event) => setContent(event.target.value)}
+          placeholder="댓글을 입력해주세요."
+          required
         />
-        <button type="submit">확인</button>
-      </form>
-    </div>
+      </div>
+      <button
+        className={styles.button}
+        type="submit"
+        disabled={!content.trim() || isSubmitting}
+      >
+        {isSubmitting ? "등록 중" : "등록"}
+      </button>
+    </form>
   );
 }

@@ -1,9 +1,9 @@
-import ArticleFrom from "../../../components/ArticleForm/ArticleForm";
+import CreateArticleForm from "../../../components/ArticleForm/CreateArticleForm";
 
 export default function WritePage() {
   return (
     <div>
-      <ArticleFrom />
+      <CreateArticleForm />
     </div>
   );
 }

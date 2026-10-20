@@ -3,7 +3,7 @@ import BoardList from "../../components/BoardList/BoardList";
 import PaginationNext from "../../components/PaginationNext/PagiantionNext";
 import WriteButton from "../../components/WriteButton/WriterButton";
 import { getArticles } from "../../api/articles";
-import BestBoardList from "../../components/BestBoardList/page";
+import BestBoardList from "../../components/BestBoardList/BestBoardList.jsx";
 import * as styles from "./boards.css.js";
 
 export default async function BoardsPage({ searchParams }) {
