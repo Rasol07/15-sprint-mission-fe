@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import AuthorInfo from "../AuthorInfo/AuthorInfo.jsx";
 import { useRouter } from "next/navigation";
 import defaultProduct from "../../assets/default_product.png";
 import * as styles from "./BoadrList.css";
@@ -40,7 +41,12 @@ export default function BoardList({ articles }) {
                 />
               </div>
             </div>
-            <p className={styles.date}>{formatDate(article.createdAt)}</p>
+            <AuthorInfo
+              name={article.author?.nickname ?? "익명"}
+              date={formatDate(article.createdAt)}
+              dateTime={article.createdAt}
+              variant="list"
+            />
           </div>
         ))
       ) : (

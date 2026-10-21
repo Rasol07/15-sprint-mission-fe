@@ -3,9 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import background from "../../assets/article-detail/f9d63.svg";
-import face from "../../assets/article-detail/cb723.svg";
-import mask from "../../assets/article-detail/0e894.svg";
+import AuthorInfo from "../AuthorInfo/AuthorInfo.jsx";
 import kebab from "../../assets/article-detail/00532.svg";
 import { deleteComment, patchComment } from "../../api/comment.js";
 import { formatRelativeTime } from "../../utils/formatRelativeTime.js";
@@ -91,37 +89,12 @@ export default function CommentItem({
         ) : (
           <p className={styles.content}>{comment.content}</p>
         )}
-        <div className={styles.author}>
-          <span className={styles.profile} aria-hidden="true">
-            <Image
-              src={background}
-              alt=""
-              width={32}
-              height={32}
-              className={styles.layer}
-            />
-            <Image
-              src={face}
-              alt=""
-              width={22.059}
-              height={20}
-              className={styles.face}
-            />
-            <Image
-              src={mask}
-              alt=""
-              width={32}
-              height={32}
-              className={styles.layer}
-            />
-          </span>
-          <div className={styles.metadata}>
-            <span>{comment.author?.nickname ?? "익명"}</span>
-            <time className={styles.date} dateTime={comment.createdAt}>
-              {now === null ? "—" : formatRelativeTime(comment.createdAt, now)}
-            </time>
-          </div>
-        </div>
+        <AuthorInfo
+          name={comment.author?.nickname ?? "익명"}
+          date={now === null ? "—" : formatRelativeTime(comment.createdAt, now)}
+          dateTime={comment.createdAt}
+          variant="comment"
+        />
       </div>
       <details className={menuStyles.menu}>
         <summary className={menuStyles.menuTrigger} aria-label="댓글 더보기">

@@ -1,10 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import AuthorInfo from "../AuthorInfo/AuthorInfo.jsx";
 import heart from "../../assets/article-detail/da76e.svg";
-import profileBackground from "../../assets/article-detail/a1f00.svg";
-import profileFace from "../../assets/article-detail/ffaeb.svg";
-import profileMask from "../../assets/article-detail/1dcf2.svg";
 import kebab from "../../assets/article-detail/00532.svg";
 import divider from "../../assets/article-detail/c5ce6.svg";
 import verticalDivider from "../../assets/article-detail/1cbff.svg";
@@ -60,39 +58,12 @@ export default function ArticleDetail({ article }) {
           </details>
         </div>
         <div className={styles.metadata}>
-          <div className={styles.author}>
-            <span className={styles.profile} aria-hidden="true">
-              <Image
-                src={profileBackground}
-                alt=""
-                width={40}
-                height={40}
-                className={styles.profileLayer}
-              />
-              <Image
-                src={profileFace}
-                alt=""
-                width={27.5741}
-                height={25.0001}
-                className={styles.profileFace}
-              />
-              <Image
-                src={profileMask}
-                alt=""
-                width={40}
-                height={40}
-                className={styles.profileLayer}
-              />
-            </span>
-            <div className={styles.authorText}>
-              <span className={styles.name}>
-                {article.author?.nickname ?? "익명"}
-              </span>
-              <time className={styles.date} dateTime={article.createdAt}>
-                {date}
-              </time>
-            </div>
-          </div>
+          <AuthorInfo
+            name={article.author?.nickname ?? "익명"}
+            date={date}
+            dateTime={article.createdAt}
+            variant="detail"
+          />
           <div className={styles.likesGroup}>
             <Image src={verticalDivider} alt="" width={1} height={34} />
             <span

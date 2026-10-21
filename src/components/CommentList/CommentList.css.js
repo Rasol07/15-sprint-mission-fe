@@ -33,29 +33,6 @@ export const content = style({
   whiteSpace: "pre-wrap",
   overflowWrap: "anywhere",
 });
-export const author = style({
-  display: "flex",
-  alignItems: "flex-start",
-  gap: 8,
-});
-export const profile = style({
-  position: "relative",
-  width: 32,
-  height: 32,
-  flexShrink: 0,
-  overflow: "hidden",
-});
-export const layer = style({ position: "absolute", top: 0, left: 0 });
-export const face = style({ position: "absolute", top: 4, left: 4.83 });
-export const metadata = style({
-  display: "flex",
-  flexDirection: "column",
-  gap: 4,
-  fontSize: 12,
-  lineHeight: "18px",
-  color: "var(--Secondary-600)",
-});
-export const date = style({ color: "var(--Secondary-400)" });
 export const empty = style({
   display: "flex",
   flexDirection: "column",

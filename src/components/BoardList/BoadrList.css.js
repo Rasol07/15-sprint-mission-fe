@@ -58,34 +58,6 @@ export const footer = style({
   gap: 16,
 });
 
-export const authorInfo = style({
-  display: "flex",
-  alignItems: "center",
-  gap: 8,
-  minWidth: 0,
-  fontSize: 14,
-  lineHeight: "24px",
-});
-
-export const profileImage = style({
-  flexShrink: 0,
-  borderRadius: "50%",
-  objectFit: "cover",
-});
-
-export const author = style({
-  color: "#4B5563",
-  overflow: "hidden",
-  textOverflow: "ellipsis",
-  whiteSpace: "nowrap",
-});
-
-export const date = style({
-  flexShrink: 0,
-  color: "#9CA3AF",
-  whiteSpace: "nowrap",
-});
-
 export const likes = style({
   display: "flex",
   alignItems: "center",

@@ -8,8 +8,8 @@ export default function CreateArticleForm() {
   const router = useRouter();
 
   const handleCreate = async (values) => {
-    await postArticles(values);
-    router.push("/boards");
+    const { data: article } = await postArticles(values);
+    router.push(`/boards/${article.id}`);
   };
 
   return (

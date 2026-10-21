@@ -48,6 +48,8 @@ export async function postArticles({ title = "", content = "" }) {
   if (!response.ok) {
     throw new Error("게시글 등록 실패");
   }
+
+  return response.json();
 }
 
 export async function deleteArticle({ id }) {

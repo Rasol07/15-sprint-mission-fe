@@ -21,7 +21,7 @@ export default function CommentForm({ id }) {
 
     setIsSubmitting(true);
     try {
-      postComment({ targeType: "articles", targetId: id, content });
+      await postComment({ targeType: "articles", targetId: id, content });
       setContent("");
       router.refresh();
     } catch {

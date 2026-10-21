@@ -38,34 +38,6 @@ export const metadata = style({
   gap: 32,
   "@media": { "(max-width: 743px)": { gap: 16, flexWrap: "wrap" } },
 });
-export const author = style({
-  display: "flex",
-  alignItems: "center",
-  gap: 16,
-  minWidth: 0,
-});
-export const profile = style({
-  position: "relative",
-  width: 40,
-  height: 40,
-  flexShrink: 0,
-  overflow: "hidden",
-});
-export const profileLayer = style({ position: "absolute", top: 0, left: 0 });
-export const profileFace = style({ position: "absolute", top: 5, left: 6.04 });
-export const authorText = style({
-  display: "flex",
-  alignItems: "center",
-  gap: 8,
-  fontSize: 14,
-  lineHeight: "24px",
-  flexWrap: "wrap",
-});
-export const name = style({ color: "var(--Secondary-600)", fontWeight: 500 });
-export const date = style({
-  color: "var(--Secondary-400)",
-  whiteSpace: "nowrap",
-});
 export const likesGroup = style({
   display: "flex",
   alignItems: "center",

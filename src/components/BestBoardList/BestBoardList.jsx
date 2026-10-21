@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import AuthorInfo from "../AuthorInfo/AuthorInfo.jsx";
 import { useRouter } from "next/navigation";
 import * as styles from "./BestBoardList.css.js";
 import medalImage from "../../assets/ic_medal.png";
@@ -48,7 +49,12 @@ export default function BestBoardList({ articles }) {
               />
             </div>
           </div>
-          <p className={styles.date}>{formatDate(article.createdAt)}</p>
+          <AuthorInfo
+            name={article.author?.nickname ?? "익명"}
+            date={formatDate(article.createdAt)}
+            dateTime={article.createdAt}
+            variant="best"
+          />
         </div>
       ))}
     </div>

@@ -108,10 +108,3 @@ export const footer = style({
   fontWeight: 400,
   lineHeight: "24px",
 });
-
-export const date = style({
-  textAlign: "right",
-  flexShrink: 0,
-  color: "#9CA3AF",
-  whiteSpace: "nowrap",
-});
